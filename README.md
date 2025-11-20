@@ -28,5 +28,5 @@ The RAVEN interface will automatically appear in the bottom-left corner when you
 Click the × button to close the overlay at any time.
 \`\`\`
 
-```json file="extension/manifest.json" isDeleted="true"
+\`\`\`json file="extension/manifest.json" isDeleted="true"
 ...deleted...
