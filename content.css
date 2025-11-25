@@ -252,7 +252,7 @@
   font-size: 14px;
   cursor: pointer;
   padding: 0;
-  margin-bottom: 15px; /* 15px spacing */
+  margin-bottom: 12px; /* Reduced from 15px to 12px for tighter spacing */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -265,12 +265,12 @@
 }
 
 .raven-detail-image-container {
-  /* Reduced image size to fit within bounds */
+  /* Reduced image height from 160px to 140px to give more room */
   width: 100%;
-  height: 160px;
+  height: 140px;
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 15px; /* 15px spacing */
+  margin-bottom: 12px; /* Reduced from 15px to 12px */
   flex-shrink: 0;
 }
 
@@ -281,13 +281,13 @@
 }
 
 .raven-detail-info {
-  margin-bottom: 15px; /* 15px spacing */
+  margin-bottom: 12px; /* Reduced from 15px to 12px */
   flex-shrink: 0;
 }
 
 .raven-detail-price {
-  /* Reduced font size from 36px to 28px to match stats */
-  font-size: 28px;
+  /* Reduced font size from 28px to 24px for better proportion */
+  font-size: 24px;
   font-weight: 700;
   color: #fffd71;
   margin-bottom: 6px;
@@ -295,11 +295,11 @@
 }
 
 .raven-detail-title {
-  /* Reduced font size from 18px to 14px */
-  font-size: 14px;
+  /* Reduced font size from 14px to 13px and adjusted line height */
+  font-size: 13px;
   color: #ffffff;
   font-weight: 600;
-  margin-bottom: 15px; /* 15px spacing */
+  margin-bottom: 12px; /* Reduced from 15px to 12px */
   font-family: "Montserrat", sans-serif;
   line-height: 1.3;
 }
@@ -310,14 +310,14 @@
   background: #7216c7;
   border: none;
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 10px 16px; /* Reduced from 12px 20px to 10px 16px */
   border-radius: 12px;
-  font-size: 13px;
+  font-size: 12px; /* Reduced from 13px to 12px */
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s;
   font-family: "Montserrat", sans-serif;
-  margin-bottom: 15px;
+  margin-bottom: 12px; /* Reduced from 15px to 12px */
   flex-shrink: 0;
 }
 
