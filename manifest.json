@@ -6,7 +6,7 @@
   "permissions": [],
   "content_scripts": [
     {
-      "matches": ["*://*.craigslist.org/*", "*://*.ebay.com/*", "*://www.facebook.com/marketplace*"],
+      "matches": ["*://*.craigslist.org/*", "*://*.ebay.com/*", "*://www.facebook.com/*"],
       "js": ["content.js"],
       "css": ["content.css"]
     }

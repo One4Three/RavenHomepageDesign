@@ -1,4 +1,14 @@
 ;(() => {
+  const url = window.location.href
+  const isMarketplace = url.includes("facebook.com/marketplace")
+  const isCraigslist = url.includes("craigslist.org")
+  const isEbay = url.includes("ebay.com")
+
+  if (!isMarketplace && !isCraigslist && !isEbay) {
+    console.log("[v0] Not on a marketplace page, skipping RAVEN injection")
+    return
+  }
+
   // Prevent multiple injections
   if (document.getElementById("raven-extension-overlay")) {
     console.log("[v0] RAVEN already exists, removing and recreating")

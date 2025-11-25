@@ -90,7 +90,8 @@
 .raven-stat-card {
   background: #272727;
   border-radius: 12px;
-  padding: 20px;
+  /* Reduced padding from 20px to 14px for more compact stat boxes */
+  padding: 14px;
   text-align: center;
 }
 
@@ -243,11 +244,13 @@
 }
 
 .raven-detail-image-container {
+  /* Reduced image size to fit within bounds */
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 160px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 15px; /* 15px spacing */
+  flex-shrink: 0;
 }
 
 .raven-detail-image {
@@ -258,36 +261,43 @@
 
 .raven-detail-info {
   margin-bottom: 15px; /* 15px spacing */
+  flex-shrink: 0;
 }
 
 .raven-detail-price {
-  font-size: 36px;
+  /* Reduced font size from 36px to 28px to match stats */
+  font-size: 28px;
   font-weight: 700;
   color: #fffd71;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-family: "Montserrat", sans-serif;
 }
 
 .raven-detail-title {
-  font-size: 18px;
+  /* Reduced font size from 18px to 14px */
+  font-size: 14px;
   color: #ffffff;
   font-weight: 600;
   margin-bottom: 15px; /* 15px spacing */
   font-family: "Montserrat", sans-serif;
+  line-height: 1.3;
 }
 
 .raven-listing-page-btn {
+  /* Reduced padding and font size for more compact button */
   width: 100%;
   background: #7216c7;
   border: none;
   color: #ffffff;
-  padding: 14px 24px;
+  padding: 12px 20px;
   border-radius: 12px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s;
   font-family: "Montserrat", sans-serif;
+  margin-bottom: 15px;
+  flex-shrink: 0;
 }
 
 .raven-listing-page-btn:hover {
