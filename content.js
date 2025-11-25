@@ -5,9 +5,7 @@
     document.getElementById("raven-extension-overlay").remove()
   }
 
-  console.log("[v0] Creating RAVEN overlay")
-
-  const chrome = window.chrome
+  console.log("[v0] Creating RAVEN overlay on:", window.location.href)
 
   const platformData = {
     all: {
@@ -87,6 +85,9 @@
   let currentTab = "all"
   let currentView = "list" // 'list' or 'detail'
   let selectedListing = null
+
+  // Declare chrome variable
+  const chrome = window.chrome
 
   // Create the overlay container
   const overlay = document.createElement("div")

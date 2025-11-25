@@ -6,9 +6,15 @@
   "permissions": [],
   "content_scripts": [
     {
-      "matches": ["*://*.craigslist.org/*", "*://*.ebay.com/*", "*://www.facebook.com/marketplace*"],
+      "matches": [
+        "*://*.craigslist.org/*",
+        "*://*.ebay.com/*",
+        "https://www.facebook.com/marketplace*",
+        "https://www.facebook.com/marketplace/*"
+      ],
       "js": ["content.js"],
-      "css": ["content.css"]
+      "css": ["content.css"],
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
