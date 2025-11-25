@@ -26,18 +26,12 @@
   isolation: isolate !important;
 }
 
-/* Removed problematic "all: unset" that broke styling - now using targeted resets */
+/* Removed problematic wildcard reset that was breaking flex layouts */
 #raven-extension-overlay * {
-  box-sizing: border-box !important;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
-/* Reapply our styles after reset */
-#raven-extension-overlay button,
-#raven-extension-overlay div,
-#raven-extension-overlay img {
-  display: block !important; /* Added !important */
-}
+/* Removed redundant display overrides */
 
 .raven-header {
   display: flex;
