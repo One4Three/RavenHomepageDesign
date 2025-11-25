@@ -1,11 +1,11 @@
 ;(() => {
   const url = window.location.href
-  const isMarketplace = url.includes("facebook.com/marketplace")
+  const isMarketplace = url.includes("facebook.com/marketplace/item/")
   const isCraigslist = url.includes("craigslist.org")
   const isEbay = url.includes("ebay.com")
 
   if (!isMarketplace && !isCraigslist && !isEbay) {
-    console.log("[v0] Not on a marketplace page, skipping RAVEN injection")
+    console.log("[v0] Not on a marketplace listing page, skipping RAVEN injection")
     return
   }
 
