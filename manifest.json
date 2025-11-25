@@ -3,15 +3,13 @@
   "name": "RAVEN - Marketplace Finder",
   "version": "1.0.0",
   "description": "Find and track marketplace listings across Craigslist, Ebay, and Facebook Marketplace",
-  "permissions": ["storage"],
-  "content_scripts": [
-    {
-      "matches": ["*://*.craigslist.org/*", "*://*.ebay.com/*", "*://*.facebook.com/marketplace/*"],
-      "js": ["content.js"],
-      "css": ["content.css"],
-      "run_at": "document_end"
-    }
-  ],
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_title": "Open RAVEN"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
   "web_accessible_resources": [
     {
       "resources": ["images/*"],
