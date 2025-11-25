@@ -1,4 +1,4 @@
-const chrome = window.chrome // Declare the chrome variable
+const chrome = window.chrome // Declare the chrome variable to fix lint error
 
 chrome.action.onClicked.addListener(async (tab) => {
   console.log("[v0] Extension icon clicked on tab:", tab.id)
