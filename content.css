@@ -1,17 +1,17 @@
-/* Reduced dimensions to 1/3 size and added fixed height with scrolling */
+/* Updated to exact Figma specs: 320x540px, Montserrat font, exact color palette, 15px/30px spacing */
 #raven-extension-overlay {
   position: fixed;
   bottom: 20px;
   left: 20px;
   z-index: 999999;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  width: 240px;
-  height: 340px;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  width: 320px;
+  height: 540px;
   background: #1a1a1a;
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 16px;
+  padding: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  color: white;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
 }
@@ -20,25 +20,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 30px; /* 30px spacing between logo/X and nav */
 }
 
 .raven-logo {
-  font-size: 20px;
+  font-size: 32px;
   font-weight: 900;
-  color: #f4e04d;
-  letter-spacing: 1px;
+  color: #fffd71;
+  letter-spacing: 2px;
+  font-style: italic;
 }
 
 .raven-close {
   background: none;
   border: none;
-  color: #666;
-  font-size: 20px;
+  color: #3b3b3b;
+  font-size: 28px;
   cursor: pointer;
   padding: 0;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,140 +47,146 @@
 }
 
 .raven-close:hover {
-  color: #999;
+  color: #cccccc;
 }
 
 .raven-tabs {
   display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 15px; /* 15px spacing */
 }
 
 .raven-tab {
   flex: 1;
-  padding: 6px 10px;
-  background: transparent;
-  border: 1px solid #333;
-  border-radius: 20px;
-  color: #999;
-  font-size: 11px;
+  padding: 10px 16px;
+  background: #272727;
+  border: 2px solid transparent;
+  border-radius: 28px;
+  color: #cccccc;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: "Montserrat", sans-serif;
 }
 
 .raven-tab:hover {
-  border-color: #666;
+  border-color: #3b3b3b;
 }
 
 .raven-tab.active {
-  background: linear-gradient(135deg, #7c3aed 0%, #f4e04d 100%);
-  border-color: transparent;
-  color: white;
+  background: #272727;
+  border: 2px solid #7216c7;
+  color: #fffd71;
 }
 
 .raven-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 15px; /* 15px spacing */
 }
 
 .raven-stat-card {
-  background: #2a2a2a;
-  border-radius: 8px;
-  padding: 10px;
+  background: #272727;
+  border-radius: 12px;
+  padding: 20px;
   text-align: center;
 }
 
 .raven-stat-value {
-  font-size: 20px;
-  font-weight: bold;
-  color: #f4e04d;
-  margin-bottom: 2px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fffd71;
+  margin-bottom: 8px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .raven-stat-label {
-  font-size: 9px;
-  color: #999;
+  font-size: 12px;
+  color: #cccccc;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
 }
 
 .raven-section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 15px; /* 15px spacing */
 }
 
 .raven-section-title {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
 }
 
 .raven-view-all {
-  background: #7c3aed;
+  background: #7216c7;
   border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 16px;
-  font-size: 9px;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+  font-family: "Montserrat", sans-serif;
 }
 
 .raven-view-all:hover {
-  background: #6b2fd6;
+  background: #501982;
 }
 
-/* Added fixed height scrollable container for listings */
 .raven-listings {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-right: 4px;
+  gap: 15px; /* 15px spacing between listings */
+  padding-right: 8px;
 }
 
-/* Custom scrollbar */
 .raven-listings::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .raven-listings::-webkit-scrollbar-track {
-  background: #2a2a2a;
-  border-radius: 2px;
+  background: #272727;
+  border-radius: 3px;
 }
 
 .raven-listings::-webkit-scrollbar-thumb {
-  background: #666;
-  border-radius: 2px;
+  background: #3b3b3b;
+  border-radius: 3px;
 }
 
 .raven-listings::-webkit-scrollbar-thumb:hover {
-  background: #888;
+  background: #cccccc;
 }
 
 .raven-listing-item {
   display: flex;
-  gap: 8px;
-  background: #2a2a2a;
-  border-radius: 8px;
-  padding: 8px;
+  gap: 12px;
+  background: #272727;
+  border-radius: 12px;
+  padding: 12px;
   cursor: pointer;
   transition: background 0.2s;
   flex-shrink: 0;
 }
 
 .raven-listing-item:hover {
-  background: #333;
+  background: #3b3b3b;
 }
 
 .raven-listing-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 6px;
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -187,19 +194,101 @@
 .raven-listing-info {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .raven-listing-price {
-  font-size: 13px;
-  font-weight: bold;
-  color: #f4e04d;
-  margin-bottom: 2px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fffd71;
+  margin-bottom: 4px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .raven-listing-title {
-  font-size: 10px;
-  color: #ccc;
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Detail view styles */
+.raven-detail-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.raven-back-btn {
+  background: none;
+  border: none;
+  color: #cccccc;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 15px; /* 15px spacing */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+}
+
+.raven-back-btn:hover {
+  color: #ffffff;
+}
+
+.raven-detail-image-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-bottom: 15px; /* 15px spacing */
+}
+
+.raven-detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.raven-detail-info {
+  margin-bottom: 15px; /* 15px spacing */
+}
+
+.raven-detail-price {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fffd71;
+  margin-bottom: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.raven-detail-title {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 15px; /* 15px spacing */
+  font-family: "Montserrat", sans-serif;
+}
+
+.raven-listing-page-btn {
+  width: 100%;
+  background: #7216c7;
+  border: none;
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: "Montserrat", sans-serif;
+}
+
+.raven-listing-page-btn:hover {
+  background: #501982;
 }

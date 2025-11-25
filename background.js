@@ -1,16 +1,26 @@
-// Background script to inject content script when extension icon is clicked
-const chrome = window.chrome // Declare the chrome variable
+// Import the chrome variable
+const chrome = require("chrome")
 
-chrome.action.onClicked.addListener((tab) => {
-  // Inject CSS first
-  chrome.scripting.insertCSS({
-    target: { tabId: tab.id },
-    files: ["content.css"],
-  })
+chrome.action.onClicked.addListener(async (tab) => {
+  try {
+    console.log("[v0] Extension icon clicked, injecting on tab:", tab.id)
 
-  // Then inject JavaScript
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ["content.js"],
-  })
+    // Inject CSS first
+    await chrome.scripting.insertCSS({
+      target: { tabId: tab.id },
+      files: ["content.css"],
+    })
+
+    console.log("[v0] CSS injected successfully")
+
+    // Then inject JavaScript
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["content.js"],
+    })
+
+    console.log("[v0] JavaScript injected successfully")
+  } catch (error) {
+    console.error("[v0] Error injecting content script:", error)
+  }
 })
