@@ -95,18 +95,19 @@
 }
 
 .raven-stat-value {
-  font-size: 28px; /* Reduced from 32px for better proportions */
+  font-size: 28px;
   font-weight: 700;
   color: #fffd71;
-  margin-bottom: 8px;
+  margin-bottom: 4px; /* Reduced from 8px to 4px for tighter spacing */
   font-family: "Montserrat", sans-serif;
 }
 
 .raven-stat-label {
-  font-size: 11px; /* Reduced from 12px for better proportions */
+  font-size: 10px; /* Reduced from 11px to 10px so text fits on one line */
   color: #cccccc;
   font-weight: 500;
   font-family: "Montserrat", sans-serif;
+  white-space: nowrap; /* Prevents text from wrapping to two lines */
 }
 
 .raven-section-header {
