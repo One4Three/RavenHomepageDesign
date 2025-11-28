@@ -5,7 +5,7 @@
   bottom: 20px !important;
   left: 20px !important;
   z-index: 999999 !important;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: "Montserrat", -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   /* Enforcing exact dimensions with isolation */
   width: 320px !important;
   height: 540px !important;
@@ -323,4 +323,117 @@
 
 .raven-listing-page-btn:hover {
   background: #501982;
+}
+
+/* Adding loading screen styles with flying bird animation */
+.raven-loading-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.raven-loading-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.raven-loading-bird-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.raven-loading-gradient {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fffd71 0%, #e8c855 30%, #d49ac8 60%, #7216c7 100%);
+  filter: blur(15px);
+  z-index: 0;
+}
+
+.raven-loading-bird {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+  animation: fly 2s ease-in-out infinite;
+}
+
+.bird-body,
+.bird-head,
+.bird-wing-left,
+.bird-wing-right {
+  fill: #1a1a1a;
+}
+
+.bird-wing-left {
+  animation: flap-left 0.5s ease-in-out infinite;
+  transform-origin: 30px 45px;
+}
+
+.bird-wing-right {
+  animation: flap-right 0.5s ease-in-out infinite;
+  transform-origin: 70px 45px;
+}
+
+@keyframes fly {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes flap-left {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes flap-right {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+}
+
+.raven-loading-text {
+  text-align: center;
+}
+
+.raven-loading-label {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.raven-loading-title {
+  font-size: 18px;
+  color: #fffd71;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.4;
+  max-width: 240px;
+  margin: 0 auto;
 }

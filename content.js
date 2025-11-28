@@ -1,21 +1,14 @@
 ;(() => {
+  let overlay = null
+  let currentTab = "all"
+  let currentView = "list"
+  let selectedListing = null
+  let isLoading = false
+
   const url = window.location.href
   const isMarketplace = url.includes("facebook.com/marketplace/item/")
   const isCraigslist = url.includes("craigslist.org")
   const isEbay = url.includes("ebay.com")
-
-  if (!isMarketplace && !isCraigslist && !isEbay) {
-    console.log("[v0] Not on a marketplace listing page, skipping RAVEN injection")
-    return
-  }
-
-  // Prevent multiple injections
-  if (document.getElementById("raven-extension-overlay")) {
-    console.log("[v0] RAVEN already exists, removing and recreating")
-    document.getElementById("raven-extension-overlay").remove()
-  }
-
-  console.log("[v0] Creating RAVEN overlay on:", window.location.href)
 
   const platformData = {
     all: {
@@ -92,18 +85,98 @@
     },
   }
 
-  let currentTab = "all"
-  let currentView = "list" // 'list' or 'detail'
-  let selectedListing = null
+  function shouldShowExtension() {
+    const url = window.location.href
+    const isMarketplace = url.includes("facebook.com/marketplace/item/")
+    const isCraigslist = url.includes("craigslist.org")
+    const isEbay = url.includes("ebay.com")
+    return isMarketplace || isCraigslist || isEbay
+  }
 
-  // Declare chrome variable
-  const chrome = window.chrome
+  function showLoadingScreen() {
+    if (!overlay) {
+      overlay = document.createElement("div")
+      overlay.id = "raven-extension-overlay"
+      document.body.appendChild(overlay)
+    }
 
-  // Create the overlay container
-  const overlay = document.createElement("div")
-  overlay.id = "raven-extension-overlay"
+    // Extract product title from page
+    const pageTitle = document.title || "listings"
 
-  // Function to render list view
+    overlay.innerHTML = `
+      <div class="raven-loading-screen">
+        <div class="raven-header">
+          <div class="raven-logo">RAVEN</div>
+          <button class="raven-close" id="raven-loading-close-btn">×</button>
+        </div>
+        <div class="raven-loading-content">
+          <div class="raven-loading-bird-container">
+            <svg class="raven-loading-bird" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 30 L30 45 L35 50 L50 42 L65 50 L70 45 Z" class="bird-body"/>
+              <circle cx="50" cy="35" r="3" class="bird-head"/>
+              <path d="M30 45 L20 50 L30 48 Z" class="bird-wing-left"/>
+              <path d="M70 45 L80 50 L70 48 Z" class="bird-wing-right"/>
+            </svg>
+            <div class="raven-loading-gradient"></div>
+          </div>
+          <div class="raven-loading-text">
+            <div class="raven-loading-label">Searching for</div>
+            <div class="raven-loading-title">${pageTitle}</div>
+          </div>
+        </div>
+      </div>
+    `
+
+    document.getElementById("raven-loading-close-btn").addEventListener("click", () => {
+      if (overlay) {
+        overlay.remove()
+        overlay = null
+      }
+    })
+
+    isLoading = true
+  }
+
+  function showContent() {
+    isLoading = false
+    renderListView()
+  }
+
+  function initExtension() {
+    console.log("[v0] Checking URL:", window.location.href)
+
+    if (!shouldShowExtension()) {
+      console.log("[v0] Not on a listing page, hiding extension")
+      if (overlay) {
+        overlay.remove()
+        overlay = null
+      }
+      return
+    }
+
+    // Remove existing overlay if present
+    if (overlay) {
+      console.log("[v0] Removing existing overlay")
+      overlay.remove()
+      overlay = null
+    }
+
+    console.log("[v0] Creating RAVEN overlay")
+
+    // Create overlay
+    overlay = document.createElement("div")
+    overlay.id = "raven-extension-overlay"
+    document.body.appendChild(overlay)
+
+    // Show loading screen
+    showLoadingScreen()
+
+    // Simulate backend API call (replace with your actual backend call)
+    setTimeout(() => {
+      showContent()
+    }, 2000)
+  }
+
   function renderListView() {
     overlay.innerHTML = `
       <div class="raven-header">
@@ -138,7 +211,7 @@
           .map(
             (listing, index) => `
           <div class="raven-listing-item" data-index="${index}">
-            <img src="${chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-listing-image">
+            <img src="${window.chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-listing-image">
             <div class="raven-listing-info">
               <div class="raven-listing-price">${listing.price}</div>
               <div class="raven-listing-title">${listing.title}</div>
@@ -152,7 +225,6 @@
     attachListViewEventListeners()
   }
 
-  // Function to render detail view
   function renderDetailView(listing) {
     overlay.innerHTML = `
       <div class="raven-header">
@@ -166,7 +238,7 @@
         </button>
         
         <div class="raven-detail-image-container">
-          <img src="${chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-detail-image">
+          <img src="${window.chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-detail-image">
         </div>
 
         <div class="raven-detail-info">
@@ -190,7 +262,6 @@
     attachDetailViewEventListeners(listing)
   }
 
-  // Attach event listeners for list view
   function attachListViewEventListeners() {
     document.getElementById("raven-close-btn").addEventListener("click", () => {
       overlay.remove()
@@ -219,7 +290,6 @@
     })
   }
 
-  // Attach event listeners for detail view
   function attachDetailViewEventListeners(listing) {
     document.getElementById("raven-close-btn").addEventListener("click", () => {
       overlay.remove()
@@ -235,11 +305,22 @@
     })
   }
 
-  // Append to body
-  document.body.appendChild(overlay)
+  let lastUrl = window.location.href
+  const urlObserver = new MutationObserver(() => {
+    const currentUrl = window.location.href
+    if (currentUrl !== lastUrl) {
+      console.log("[v0] URL changed from", lastUrl, "to", currentUrl)
+      lastUrl = currentUrl
+      initExtension()
+    }
+  })
 
-  // Render initial view
-  renderListView()
+  // Start observing for URL changes
+  urlObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+  })
 
-  console.log("[v0] RAVEN overlay created successfully")
+  // Initial load
+  initExtension()
 })()
