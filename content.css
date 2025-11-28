@@ -40,13 +40,14 @@
   margin-bottom: 30px; /* 30px spacing between logo/X and nav */
 }
 
-.raven-logo {
-  font-size: 32px;
-  font-weight: 900;
-  color: #fffd71;
-  letter-spacing: 2px;
-  font-style: italic;
+/* Replaced text logo styling with image logo styling */
+.raven-logo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
 }
+
+/* Removed old .raven-logo text styles */
 
 .raven-close {
   background: none;

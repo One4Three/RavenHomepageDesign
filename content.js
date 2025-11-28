@@ -106,7 +106,7 @@
     overlay.innerHTML = `
       <div class="raven-loading-screen">
         <div class="raven-header">
-          <div class="raven-logo">RAVEN</div>
+          <img src="${window.chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
           <button class="raven-close" id="raven-loading-close-btn">×</button>
         </div>
         <div class="raven-loading-content">
@@ -174,13 +174,13 @@
     // Simulate backend API call (replace with your actual backend call)
     setTimeout(() => {
       showContent()
-    }, 2000)
+    }, 5000)
   }
 
   function renderListView() {
     overlay.innerHTML = `
       <div class="raven-header">
-        <div class="raven-logo">RAVEN</div>
+        <img src="${window.chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
         <button class="raven-close" id="raven-close-btn">×</button>
       </div>
 
@@ -228,7 +228,7 @@
   function renderDetailView(listing) {
     overlay.innerHTML = `
       <div class="raven-header">
-        <div class="raven-logo">RAVEN</div>
+        <img src="${window.chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
         <button class="raven-close" id="raven-close-btn">×</button>
       </div>
 
