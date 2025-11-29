@@ -28,7 +28,7 @@
 
 /* Removed problematic wildcard reset that was breaking flex layouts */
 #raven-extension-overlay * {
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: "Montserrat", -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 /* Removed redundant display overrides */
@@ -362,60 +362,16 @@
   z-index: 0;
 }
 
-.raven-loading-bird {
+/* Updated bird animation styles to work with GIF instead of SVG */
+.raven-loading-bird-gif {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   z-index: 1;
-  animation: fly 2s ease-in-out infinite;
+  object-fit: contain;
 }
 
-.bird-body,
-.bird-head,
-.bird-wing-left,
-.bird-wing-right {
-  fill: #1a1a1a;
-}
-
-.bird-wing-left {
-  animation: flap-left 0.5s ease-in-out infinite;
-  transform-origin: 30px 45px;
-}
-
-.bird-wing-right {
-  animation: flap-right 0.5s ease-in-out infinite;
-  transform-origin: 70px 45px;
-}
-
-@keyframes fly {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes flap-left {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-25deg);
-  }
-}
-
-@keyframes flap-right {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(25deg);
-  }
-}
+/* Removed old SVG bird styles */
 
 .raven-loading-text {
   text-align: center;
