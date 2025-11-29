@@ -85,6 +85,8 @@
     },
   }
 
+  const chrome = window.chrome // Declare chrome variable
+
   function shouldShowExtension() {
     const url = window.location.href
     const isMarketplace = url.includes("facebook.com/marketplace/item/")
@@ -106,7 +108,7 @@
     overlay.innerHTML = `
       <div class="raven-loading-screen">
         <div class="raven-header">
-          <img src="${window.chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
+          <img src="${chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
           <button class="raven-close" id="raven-loading-close-btn">×</button>
         </div>
         <div class="raven-loading-content">
@@ -180,7 +182,7 @@
   function renderListView() {
     overlay.innerHTML = `
       <div class="raven-header">
-        <img src="${window.chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
+        <img src="${chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
         <button class="raven-close" id="raven-close-btn">×</button>
       </div>
 
@@ -211,7 +213,7 @@
           .map(
             (listing, index) => `
           <div class="raven-listing-item" data-index="${index}">
-            <img src="${window.chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-listing-image">
+            <img src="${chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-listing-image">
             <div class="raven-listing-info">
               <div class="raven-listing-price">${listing.price}</div>
               <div class="raven-listing-title">${listing.title}</div>
@@ -228,7 +230,7 @@
   function renderDetailView(listing) {
     overlay.innerHTML = `
       <div class="raven-header">
-        <img src="${window.chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
+        <img src="${chrome.runtime.getURL("images/raven-logo.png")}" alt="RAVEN" class="raven-logo-img">
         <button class="raven-close" id="raven-close-btn">×</button>
       </div>
 
@@ -238,7 +240,7 @@
         </button>
         
         <div class="raven-detail-image-container">
-          <img src="${window.chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-detail-image">
+          <img src="${chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-detail-image">
         </div>
 
         <div class="raven-detail-info">
