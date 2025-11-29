@@ -16,19 +16,19 @@
       avgPrice: "$0.00",
       listings: [
         {
-          image: "placeholder-1.jpg",
+          image: "nike-matcha-1.jpg",
           price: "$0.00",
           title: "Listing Title 1",
           url: window.location.href,
         },
         {
-          image: "placeholder-2.jpg",
+          image: "nike-matcha-2.jpg",
           price: "$0.00",
           title: "Listing Title 2",
           url: window.location.href,
         },
         {
-          image: "placeholder-3.jpg",
+          image: "nike-matcha-3.jpg",
           price: "$0.00",
           title: "Listing Title 3",
           url: window.location.href,
@@ -40,19 +40,19 @@
       avgPrice: "$0.00",
       listings: [
         {
-          image: "placeholder-1.jpg",
+          image: "nike-matcha-1.jpg",
           price: "$0.00",
           title: "Listing Title 1",
           url: window.location.href,
         },
         {
-          image: "placeholder-2.jpg",
+          image: "nike-matcha-2.jpg",
           price: "$0.00",
           title: "Listing Title 2",
           url: window.location.href,
         },
         {
-          image: "placeholder-3.jpg",
+          image: "nike-matcha-3.jpg",
           price: "$0.00",
           title: "Listing Title 3",
           url: window.location.href,
@@ -64,19 +64,19 @@
       avgPrice: "$0.00",
       listings: [
         {
-          image: "placeholder-1.jpg",
+          image: "nike-matcha-1.jpg",
           price: "$0.00",
           title: "Listing Title 1",
           url: window.location.href,
         },
         {
-          image: "placeholder-2.jpg",
+          image: "nike-matcha-2.jpg",
           price: "$0.00",
           title: "Listing Title 2",
           url: window.location.href,
         },
         {
-          image: "placeholder-3.jpg",
+          image: "nike-matcha-3.jpg",
           price: "$0.00",
           title: "Listing Title 3",
           url: window.location.href,
