@@ -10,79 +10,44 @@
   const isCraigslist = url.includes("craigslist.org")
   const isEbay = url.includes("ebay.com")
 
-  const platformData = {
-    all: {
-      count: 128,
-      avgPrice: "$140.42",
-      listings: [
-        {
-          image: "nike-matcha-1.jpg",
-          price: "$125.00",
-          title: "Nike SB Dunk Low 'Matcha'",
+  let backendData = {
+    all: { count: 0, avgPrice: "$0.00", listings: [] },
+    craigslist: { count: 0, avgPrice: "$0.00", listings: [] },
+    ebay: { count: 0, avgPrice: "$0.00", listings: [] },
+  }
+
+  async function fetchBackendData() {
+    try {
+      // Replace this URL with your actual backend endpoint
+      const response = await fetch("YOUR_BACKEND_API_URL", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           url: window.location.href,
-        },
-        {
-          image: "nike-matcha-2.jpg",
-          price: "$159.00",
-          title: "Nike SB Matcha",
-          url: window.location.href,
-        },
-        {
-          image: "nike-matcha-3.jpg",
-          price: "$139.00",
-          title: "Nike SB Dunks",
-          url: window.location.href,
-        },
-      ],
-    },
-    craigslist: {
-      count: 47,
-      avgPrice: "$132.50",
-      listings: [
-        {
-          image: "craigslist-1.jpg",
-          price: "$120.00",
-          title: "Nike Dunk Low - Barely Used",
-          url: window.location.href,
-        },
-        {
-          image: "craigslist-2.jpg",
-          price: "$135.00",
-          title: "Retro Nike Dunks Green",
-          url: window.location.href,
-        },
-        {
-          image: "craigslist-3.jpg",
-          price: "$142.00",
-          title: "Nike SB Low Top Sneakers",
-          url: window.location.href,
-        },
-      ],
-    },
-    ebay: {
-      count: 81,
-      avgPrice: "$145.75",
-      listings: [
-        {
-          image: "ebay-1.jpg",
-          price: "$149.99",
-          title: "Nike SB Dunk Low Matcha - Size 10",
-          url: window.location.href,
-        },
-        {
-          image: "ebay-2.jpg",
-          price: "$138.00",
-          title: "Authentic Nike SB Matcha Colorway",
-          url: window.location.href,
-        },
-        {
-          image: "ebay-3.jpg",
-          price: "$155.00",
-          title: "Nike SB Dunk Low Green/White",
-          url: window.location.href,
-        },
-      ],
-    },
+          // Add any other parameters your backend needs
+        }),
+      })
+
+      const data = await response.json()
+
+      // Expected backend response format:
+      // {
+      //   all: { count: 128, avgPrice: "$140.42", listings: [...] },
+      //   craigslist: { count: 47, avgPrice: "$132.50", listings: [...] },
+      //   ebay: { count: 81, avgPrice: "$145.75", listings: [...] }
+      // }
+      // Each listing should have: { image: "https://...", price: "$X.XX", title: "...", url: "...", platform: "ebay" }
+
+      backendData = data
+    } catch (error) {
+      console.error("[v0] Backend fetch error:", error)
+      // Fallback to empty data on error
+      backendData = {
+        all: { count: 0, avgPrice: "$0.00", listings: [] },
+        craigslist: { count: 0, avgPrice: "$0.00", listings: [] },
+        ebay: { count: 0, avgPrice: "$0.00", listings: [] },
+      }
+    }
   }
 
   function shouldShowExtension() {
@@ -137,7 +102,7 @@
     renderListView()
   }
 
-  function initExtension() {
+  async function initExtension() {
     console.log("[v0] Checking URL:", window.location.href)
 
     if (!shouldShowExtension()) {
@@ -149,7 +114,6 @@
       return
     }
 
-    // Remove existing overlay if present
     if (overlay) {
       console.log("[v0] Removing existing overlay")
       overlay.remove()
@@ -158,18 +122,14 @@
 
     console.log("[v0] Creating RAVEN overlay")
 
-    // Create overlay
     overlay = document.createElement("div")
     overlay.id = "raven-extension-overlay"
     document.body.appendChild(overlay)
 
-    // Show loading screen
     showLoadingScreen()
 
-    // Simulate backend API call (replace with your actual backend call)
-    setTimeout(() => {
-      showContent()
-    }, 5000)
+    await fetchBackendData()
+    showContent()
   }
 
   function renderListView() {
@@ -187,11 +147,11 @@
 
       <div class="raven-stats">
         <div class="raven-stat-card">
-          <div class="raven-stat-value" id="stat-count">${platformData[currentTab].count}</div>
+          <div class="raven-stat-value" id="stat-count">${backendData[currentTab].count}</div>
           <div class="raven-stat-label">Listings Found</div>
         </div>
         <div class="raven-stat-card">
-          <div class="raven-stat-value" id="stat-price">${platformData[currentTab].avgPrice}</div>
+          <div class="raven-stat-value" id="stat-price">${backendData[currentTab].avgPrice}</div>
           <div class="raven-stat-label">Average Price</div>
         </div>
       </div>
@@ -202,11 +162,12 @@
       </div>
 
       <div class="raven-listings" id="raven-listings">
-        ${platformData[currentTab].listings
+        ${backendData[currentTab].listings
           .map(
             (listing, index) => `
           <div class="raven-listing-item" data-index="${index}">
-            <img src="${window.chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-listing-image">
+            <img src="${listing.image}" alt="${listing.title}" class="raven-listing-image" crossorigin="anonymous">
+            ${listing.platform ? `<div class="raven-platform-badge raven-platform-${listing.platform}">${listing.platform === "ebay" ? "eBay" : listing.platform === "craigslist" ? "CL" : "FB"}</div>` : ""}
             <div class="raven-listing-info">
               <div class="raven-listing-price">${listing.price}</div>
               <div class="raven-listing-title">${listing.title}</div>
@@ -233,7 +194,7 @@
         </button>
         
         <div class="raven-detail-image-container">
-          <img src="${window.chrome.runtime.getURL(`images/${listing.image}`)}" alt="${listing.title}" class="raven-detail-image">
+          <img src="${listing.image}" alt="${listing.title}" class="raven-detail-image" crossorigin="anonymous">
         </div>
 
         <div class="raven-detail-info">
@@ -244,11 +205,11 @@
 
         <div class="raven-stats">
           <div class="raven-stat-card">
-            <div class="raven-stat-value">${platformData[currentTab].count}</div>
+            <div class="raven-stat-value">${backendData[currentTab].count}</div>
             <div class="raven-stat-label">Listings Found</div>
           </div>
           <div class="raven-stat-card">
-            <div class="raven-stat-value">${platformData[currentTab].avgPrice}</div>
+            <div class="raven-stat-value">${backendData[currentTab].avgPrice}</div>
             <div class="raven-stat-label">Average Price</div>
           </div>
         </div>
@@ -274,7 +235,7 @@
     listingItems.forEach((item) => {
       item.addEventListener("click", () => {
         const index = Number.parseInt(item.getAttribute("data-index"))
-        selectedListing = platformData[currentTab].listings[index]
+        selectedListing = backendData[currentTab].listings[index]
         currentView = "detail"
         renderDetailView(selectedListing)
       })
