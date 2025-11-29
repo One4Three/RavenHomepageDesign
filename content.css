@@ -37,7 +37,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px; /* 30px spacing between logo/X and nav */
+  /* Reduced margin from 30px to 20px to move nav bar up */
+  margin-bottom: 20px;
 }
 
 /* Replaced text logo styling with image logo styling */
@@ -71,7 +72,8 @@
 .raven-tabs {
   display: flex;
   gap: 10px;
-  margin-bottom: 15px; /* 15px spacing */
+  /* Reduced margin from 15px to 10px for tighter spacing */
+  margin-bottom: 10px;
 }
 
 .raven-tab {
@@ -108,14 +110,14 @@
 .raven-stat-card {
   background: #272727;
   border-radius: 12px;
-  /* Reduced padding from 14px to 10px for more compact stat boxes */
-  padding: 10px;
+  /* Increased padding from 10px to 12px for slightly taller stat boxes */
+  padding: 12px;
   text-align: center;
 }
 
 .raven-stat-value {
-  /* Reduced font size from 28px to 22px */
-  font-size: 22px;
+  /* Increased font size from 22px to 24px */
+  font-size: 24px;
   font-weight: 700;
   color: #fffd71;
   /* Reduced margin from 4px to 2px for tighter spacing */
