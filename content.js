@@ -156,10 +156,7 @@
         </div>
       </div>
 
-      <div class="raven-section-header">
-        <div class="raven-section-title">Top Listings</div>
-        <button class="raven-view-all">View All Listings</button>
-      </div>
+      <div class="raven-section-title">Top Listings</div>
 
       <div class="raven-listings" id="raven-listings">
         ${backendData[currentTab].listings
@@ -239,10 +236,6 @@
         currentView = "detail"
         renderDetailView(selectedListing)
       })
-    })
-
-    overlay.querySelector(".raven-view-all").addEventListener("click", () => {
-      console.log("[v0] View all listings clicked")
     })
   }
 
