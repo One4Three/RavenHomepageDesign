@@ -111,49 +111,11 @@
         </div>
         <div class="raven-loading-content">
           <div class="raven-loading-bird-container">
-            <svg class="raven-loading-bird" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-              <!-- Body -->
-              <ellipse cx="60" cy="50" rx="18" ry="22" class="bird-body"/>
-              
-              <!-- Head and beak -->
-              <circle cx="60" cy="32" r="10" class="bird-head"/>
-              <path d="M68 30 L75 32 L68 34 Z" class="bird-beak"/>
-              
-              <!-- Eye -->
-              <circle cx="63" cy="30" r="1.5" fill="#fffd71"/>
-              
-              <!-- Tail feathers (detailed fan) -->
-              <path d="M60 70 L58 85 L60 83 Z" class="bird-tail-feather"/>
-              <path d="M60 70 L60 88 L60 83 Z" class="bird-tail-feather"/>
-              <path d="M60 70 L62 85 L60 83 Z" class="bird-tail-feather"/>
-              
-              <!-- Left wing with feather details -->
-              <g class="bird-wing-left">
-                <!-- Main wing shape -->
-                <path d="M50 45 L25 50 L28 48 L30 50 L33 48 L35 50 L38 48 L42 50 L45 48 L48 50 Z" class="wing-main"/>
-                <!-- Wing feathers (individual primaries) -->
-                <path d="M25 50 L22 55 L25 52 Z" class="wing-feather"/>
-                <path d="M28 48 L25 53 L28 50 Z" class="wing-feather"/>
-                <path d="M33 48 L30 53 L33 50 Z" class="wing-feather"/>
-                <path d="M38 48 L35 53 L38 50 Z" class="wing-feather"/>
-                <path d="M42 50 L39 55 L42 52 Z" class="wing-feather"/>
-              </g>
-              
-              <!-- Right wing with feather details -->
-              <g class="bird-wing-right">
-                <!-- Main wing shape -->
-                <path d="M70 45 L95 50 L92 48 L90 50 L87 48 L85 50 L82 48 L78 50 L75 48 L72 50 Z" class="wing-main"/>
-                <!-- Wing feathers (individual primaries) -->
-                <path d="M95 50 L98 55 L95 52 Z" class="wing-feather"/>
-                <path d="M92 48 L95 53 L92 50 Z" class="wing-feather"/>
-                <path d="M87 48 L90 53 L87 50 Z" class="wing-feather"/>
-                <path d="M82 48 L85 53 L82 50 Z" class="wing-feather"/>
-                <path d="M78 50 L81 55 L78 52 Z" class="wing-feather"/>
-              </g>
-              
-              <!-- Legs -->
-              <line x1="58" y1="70" x2="56" y2="78" stroke="#1a1a1a" stroke-width="1.5"/>
-              <line x1="62" y1="70" x2="64" y2="78" stroke="#1a1a1a" stroke-width="1.5"/>
+            <svg class="raven-loading-bird" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 30 L30 45 L35 50 L50 42 L65 50 L70 45 Z" class="bird-body"/>
+              <circle cx="50" cy="35" r="3" class="bird-head"/>
+              <path d="M30 45 L20 50 L30 48 Z" class="bird-wing-left"/>
+              <path d="M70 45 L80 50 L70 48 Z" class="bird-wing-right"/>
             </svg>
             <div class="raven-loading-gradient"></div>
           </div>
