@@ -362,24 +362,27 @@
   z-index: 0;
 }
 
+/* Updated bird SVG styling for more detailed raven with proper transform origins for wing groups */
 .raven-loading-bird {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   z-index: 1;
   animation: fly 2s ease-in-out infinite;
 }
 
 .bird-body,
 .bird-head,
-.bird-wing-left,
-.bird-wing-right {
+.bird-beak,
+.bird-tail-feather,
+.wing-main,
+.wing-feather {
   fill: #1a1a1a;
 }
 
 .bird-wing-left {
   animation: flap-left 0.5s ease-in-out infinite;
-  transform-origin: 30px 45px;
+  transform-origin: 50px 45px;
 }
 
 .bird-wing-right {
