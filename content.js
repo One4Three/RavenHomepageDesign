@@ -111,7 +111,12 @@
         </div>
         <div class="raven-loading-content">
           <div class="raven-loading-bird-container">
-            <img src="${window.chrome.runtime.getURL("images/flying-bird.gif")}" alt="Flying Bird" class="raven-loading-bird-gif">
+            <svg class="raven-loading-bird" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 30 L30 45 L35 50 L50 42 L65 50 L70 45 Z" class="bird-body"/>
+              <circle cx="50" cy="35" r="3" class="bird-head"/>
+              <path d="M30 45 L20 50 L30 48 Z" class="bird-wing-left"/>
+              <path d="M70 45 L80 50 L70 48 Z" class="bird-wing-right"/>
+            </svg>
             <div class="raven-loading-gradient"></div>
           </div>
           <div class="raven-loading-text">
