@@ -104,7 +104,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 15px; /* 15px spacing */
+  /* Removed margin-bottom to eliminate gap before listings */
 }
 
 .raven-stat-card {
@@ -146,6 +146,7 @@
   font-weight: 600;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
+  /* This class is no longer used in HTML but keeping for backwards compatibility */
 }
 
 .raven-view-all {
@@ -159,6 +160,7 @@
   cursor: pointer;
   transition: background 0.2s;
   font-family: "Montserrat", sans-serif;
+  /* This class is no longer used in HTML but keeping for backwards compatibility */
 }
 
 .raven-view-all:hover {
@@ -166,9 +168,9 @@
 }
 
 .raven-listings {
-  /* Increased height from 200px to 240px to show 3 listings */
-  height: 240px !important;
-  max-height: 240px !important;
+  /* Increased height from 240px to 285px to fill the space left by removed title */
+  height: 285px !important;
+  max-height: 285px !important;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
